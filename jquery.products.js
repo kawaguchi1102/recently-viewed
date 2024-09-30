@@ -139,6 +139,14 @@ jQuery.cookie=function(b,j,m){if(typeof j!="undefined"){m=m||{};if(j===null){j="
        // How many products to show.
        config.howManyToShow = Math.min(productHandleQueue.length, config.howManyToShow);
 
+       // Check if there are any products to show.
+       if (productHandleQueue.length === 0 || template.length === 0 || wrapper.length === 0) {
+         wrapper.hide();  // Hide the wrapper if no products are available
+         return;
+       } else {
+         wrapper.show();  // Ensure the wrapper is visible if products are available
+       }
+
        // If we have any to show.
        if (config.howManyToShow && template.length && wrapper.length) {
          // Getting each product with an Ajax call and rendering it on the page.
